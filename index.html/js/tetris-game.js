@@ -580,7 +580,7 @@ class TetrisGame {
         const y = (popup.y - popup.age / 20) * size;
 
         this.ctx.fillStyle = `rgba(255, 215, 0, ${popup.opacity})`;
-        this.ctx.font = 'bold 12px Arial';
+        this.ctx.font = 'bold 22px Arial';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillText(`+${popup.xp} XP`, x, y);
