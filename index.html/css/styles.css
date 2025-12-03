@@ -1066,10 +1066,10 @@ body {
 /* Final safety rules: ensure the scaled game container never exceeds the viewport
    and stays centered. Applied last so it overrides previous media rules. */
 #gamePage .game-container {
-    transform: scale(1.20) !important;
+    transform: scale(1.10) !important;
     transform-origin: top center !important;
-    width: calc(100% / 1.20) !important;
-    max-width: calc(100% / 1.20) !important;
+    width: calc(100% / 1.10) !important;
+    max-width: calc(100% / 1.10) !important;
     margin: 0 auto !important;
 }
 

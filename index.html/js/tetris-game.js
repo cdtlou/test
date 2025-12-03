@@ -8,7 +8,7 @@ class TetrisGame {
         // Déterminer une taille de bloc adaptée (plus grande sur mobile pour le toucher)
         // Increase block sizes by ~20% from previous baseline
         const DEFAULT_BLOCK = 40;
-        const TOUCH_BLOCK = 53; // larger for fingers
+        const TOUCH_BLOCK = 60; // larger for fingers on small screens
         this.BLOCK_SIZE = window.innerWidth < 768 ? TOUCH_BLOCK : DEFAULT_BLOCK;
 
         // Forcer la résolution du canvas pour correspondre à une grille 10x20
