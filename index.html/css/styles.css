@@ -599,6 +599,27 @@ body {
     overflow-y: auto;
 }
 
+/* Fullscreen mode styling */
+#gamePage:fullscreen {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#gamePage:-webkit-full-screen {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#gamePage:-moz-full-screen {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#gamePage:-ms-fullscreen {
+    padding: 10px;
+    padding-top: 20px;
+}
+
 .game-container {
     display: flex;
     gap: 30px;

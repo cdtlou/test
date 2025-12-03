@@ -489,6 +489,19 @@ class UIManager {
 
     startGame() {
         this.showPage('gamePage');
+        
+        // Request fullscreen to hide browser UI
+        const gamePage = document.getElementById('gamePage');
+        if (gamePage.requestFullscreen) {
+            gamePage.requestFullscreen().catch(err => console.log('Fullscreen request failed:', err.message));
+        } else if (gamePage.webkitRequestFullscreen) {
+            gamePage.webkitRequestFullscreen();
+        } else if (gamePage.mozRequestFullScreen) {
+            gamePage.mozRequestFullScreen();
+        } else if (gamePage.msRequestFullscreen) {
+            gamePage.msRequestFullscreen();
+        }
+        
         if (window.tetrisGame) {
             window.tetrisGame.start();
             this.updateGameDisplay(0, 0);
@@ -505,6 +518,18 @@ class UIManager {
         if (window.tetrisGame) {
             window.tetrisGame.stop();
         }
+        
+        // Exit fullscreen when leaving game
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(err => console.log('Exit fullscreen failed:', err.message));
+        } else if (document.webkitFullscreenElement) {
+            document.webkitExitFullscreen();
+        } else if (document.mozFullScreenElement) {
+            document.mozCancelFullScreen();
+        } else if (document.msFullscreenElement) {
+            document.msExitFullscreen();
+        }
+        
         this.showPage('lobbyPage');
     }
 
