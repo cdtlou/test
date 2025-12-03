@@ -1,0 +1,154 @@
+════════════════════════════════════════════════════════════
+  🚀 SYNCHRONISATION AVEC GITHUB - GUIDE COMPLET
+════════════════════════════════════════════════════════════
+
+✅ OPTION 1: JOUER SANS SYNCHRONISATION (Plus simple)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► Accès: https://ton-user.github.io/ton-repo
+► Les comptes se sauvegardent LOCALEMENT
+► Chaque appareil a ses propres comptes
+► AUCUNE configuration nécessaire!
+
+
+✅ OPTION 2: SYNCHRONISATION SERVEUR (Comptes partout)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+ÉTAPE 1: Installer Node.js (une fois)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► Télécharge: https://nodejs.org/
+► Installe Node.js LTS
+► Vérification: ouvre PowerShell et tape "node --version"
+
+
+ÉTAPE 2: Cloner le repo sur ton PC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans PowerShell:
+
+    git clone https://github.com/TON-USER/TON-REPO.git
+    cd TON-REPO
+
+
+ÉTAPE 3: Lancer le serveur
+━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans PowerShell (dans le dossier du jeu):
+
+    node sync-server.js
+
+▶ Message attendu: "🚀 Serveur lancé sur http://localhost:3000"
+
+
+ÉTAPE 4: Trouver l'IP de ton PC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans une autre PowerShell:
+
+    ipconfig
+
+Cherche "Adresse IPv4" - exemple: 192.168.1.100
+
+
+ÉTAPE 5: Lancer ton serveur web local
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AVEC VS CODE (Simple):
+    ► Installe l'extension "Live Server"
+    ► Clique droit sur index.html → "Open with Live Server"
+    ► Ça ouvre automatiquement http://localhost:5500
+
+AVEC PYTHON:
+    ► PowerShell: python -m http.server 5500
+    ► Accès: http://localhost:5500
+
+AVEC NODE HTTP-SERVER:
+    ► npm install -g http-server
+    ► http-server -p 5500
+
+
+ÉTAPE 6: ACCÉDER AU JEU
+━━━━━━━━━━━━━━━━━━━━━
+
+SUR LE PC:
+    http://localhost:5500/index.html
+
+SUR LE TÉLÉPHONE:
+    http://192.168.1.100:5500/index.html
+    (remplace l'IP par celle trouvée en étape 4)
+
+
+ÉTAPE 7: CRÉER ET SYNCHRONISER!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ SUR LE PC:
+    ► Crée un compte: pseudo "test", code "123"
+    ► Tu verras: ✅ Synchronisé (en haut à droite)
+
+2️⃣ SUR LE TÉLÉPHONE:
+    ► Première visite? Un popup te demandera l'IP du serveur
+    ► Entre: 192.168.1.100 (ou l'IP de ton PC)
+    ► Connecte-toi avec les MÊMES identifiants: "test" / "123"
+    ► ✅ Les données sont synchronisées!
+
+3️⃣ TEST:
+    ► Joue sur le téléphone, gagne des points
+    ► Retourne sur le PC
+    ► Les points sont synchronisés! 🎉
+
+
+════════════════════════════════════════════════════════════
+
+🔍 VÉRIFICATION QUE ÇA MARCHE:
+
+☑️ Indicateur de synchronisation:
+    - 📡 Synchronisation... = En cours
+    - ✅ Synchronisé = Réussi!
+    - ⚠️ Hors ligne = Pas de serveur
+
+☑️ Console du navigateur (F12 → Console):
+    Regarde les messages ✅ ou ❌
+
+
+════════════════════════════════════════════════════════════
+
+❓ DÉPANNAGE:
+
+PROBLÈME: "Pseudo non trouvé sur téléphone"
+SOLUTION:
+    1. Vérifie que le serveur tourne: "node sync-server.js"
+    2. Vérifie l'IP: ipconfig
+    3. Essaye http://[IP]:5500 depuis le téléphone
+
+PROBLÈME: "Erreur connexion au serveur"
+SOLUTION:
+    1. Utilise HTTP, pas HTTPS
+    2. Téléphone et PC sur le même Wi-Fi?
+    3. Ping l'IP du PC depuis le téléphone
+    4. Regarde la console (F12)
+
+PROBLÈME: "Les données ne se synchronisent pas"
+SOLUTION:
+    1. Attends 5-10 secondes
+    2. Rafraîchis la page (F5)
+    3. Regarde l'indicateur de sync en haut à droite
+    4. Vérifie que le serveur tourne
+
+PROBLÈME: "Je veux jouer sans synchronisation"
+SOLUTION:
+    ✅ Pas de problème! Utilise juste GitHub Pages
+    ► Pas besoin du serveur
+    ► Les comptes se sauvegarderont localement
+
+
+════════════════════════════════════════════════════════════
+
+📁 FICHIERS IMPORTANTS:
+
+► sync-server.js = Serveur de synchronisation
+► accounts-data.json = Sauvegarde des comptes (généré)
+► js/account-system.js = Gestion des comptes + sync
+
+
+════════════════════════════════════════════════════════════
+
+🎮 C'EST PRÊT! Profite du jeu!
+
+Questions? Regarde la console du navigateur (F12)

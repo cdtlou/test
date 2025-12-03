@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>District - Tetris Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Sync indicator removed per user preference (visual) -->
+
+    <!-- Page de connexion -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <h1>DISTRICT</h1>
+            <div class="login-form">
+                <input type="text" id="pseudoInput" placeholder="Pseudo" maxlength="20">
+                <input type="password" id="codeInput" placeholder="Code (mot de passe)" maxlength="20">
+                <div class="login-buttons">
+                    <button id="createBtn" class="btn btn-primary">Créer un compte</button>
+                    <button id="loginBtn" class="btn btn-primary">Se connecter</button>
+                </div>
+            </div>
+            <div id="loginError" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Page Lobby -->
+    <div id="lobbyPage" class="page">
+        <div class="lobby-header">
+            <div class="user-info">
+                <div class="username"><span id="lobbyUsername"></span></div>
+                <div class="stats">
+                    <div class="stat">
+                        <div>Niveau: <span id="lobbyLevel">1</span></div>
+                        <div class="xp-progress-text">XP: <span id="lobbyXP">0</span>/<span id="lobbyXPRequired">100</span></div>
+                        <div class="xp-progress-bar">
+                            <div id="lobbyXPFill" class="xp-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-btn">
+                <button id="settingsBtn" class="btn btn-small">⚙️ Paramètres</button>
+            </div>
+        </div>
+
+        <div class="lobby-content">
+            <div class="lobby-section">
+                <h2>Menu Principal</h2>
+                <div class="lobby-buttons">
+                    <button id="playBtn" class="btn btn-large">🎮 Jouer</button>
+                    <button id="shopBtn" class="btn btn-large">💎 Boutique</button>
+                    <button id="casierBtn" class="btn btn-large">👕 Casier</button>
+                </div>
+            </div>
+
+            <div class="lobby-section records">
+                <div class="record-box">
+                    <h3>Mon Record</h3>
+                    <p id="playerRecord">0</p>
+                </div>
+                <div class="record-box">
+                    <h3>Top 3 Joueurs</h3>
+                    <ol id="topPlayers">
+                        <li>-</li>
+                        <li>-</li>
+                        <li>-</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Paramètres -->
+    <div id="settingsPage" class="page">
+        <div class="settings-container">
+            <h2>Paramètres</h2>
+            <div class="settings-grid">
+                <div class="setting-box">
+                    <label>Volume Musique</label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="70">
+                    <span id="musicVolumeValue">70%</span>
+                </div>
+                <div class="setting-box">
+                    <label>Volume Effets</label>
+                    <input type="range" id="effectsVolume" min="0" max="100" value="70">
+                    <span id="effectsVolumeValue">70%</span>
+                </div>
+                <!-- PC key display removed per user preference -->
+            </div>
+            
+            <!-- Backup UI removed per user request -->
+            
+            <div class="settings-buttons">
+                <button id="closeSettingsBtn" class="btn btn-primary">Fermer</button>
+                <button id="logoutBtn" class="btn btn-primary btn-danger">Déconnexion</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Boutique -->
+    <div id="shopPage" class="page">
+        <h2>Boutique</h2>
+        <div class="shop-container">
+            <div class="shop-section">
+                <h3>Skins de Blocs</h3>
+                <div id="skinsList" class="items-grid">
+                    <!-- Rempli par JS -->
+                </div>
+            </div>
+            <div class="shop-section">
+                <h3>Musiques</h3>
+                <div id="musicsList" class="items-grid">
+                    <!-- Rempli par JS -->
+                </div>
+            </div>
+        </div>
+        <button id="closeShopBtn" class="btn btn-primary">Retour</button>
+    </div>
+
+    <!-- Page Casier -->
+    <div id="casierPage" class="page">
+        <h2>Casier</h2>
+        <div class="casier-container">
+            <div class="casier-section">
+                <h3>Skins de Blocs</h3>
+                <div id="skinsWardrobe" class="wardrobe-grid">
+                    <!-- Rempli par JS -->
+                </div>
+            </div>
+            <div class="casier-section">
+                <h3>Musiques</h3>
+                <div id="musicsWardrobe" class="wardrobe-grid">
+                    <!-- Rempli par JS -->
+                </div>
+            </div>
+        </div>
+        <button id="closeCasierBtn" class="btn btn-primary">Retour</button>
+    </div>
+    <!-- Page Jeu Tetris -->
+    <div id="gamePage" class="page">
+        <div class="game-container">
+            <!-- Panel Gauche (Mobile seulement) -->
+            <div class="game-mobile-sidebar">
+                <div class="info-box">
+                    <h3>Score</h3>
+                    <p id="gameScore-mobile">0</p>
+                </div>
+                <div class="info-box">
+                    <h3>XP</h3>
+                    <p id="gameXP-mobile">0</p>
+                </div>
+                <div class="info-box">
+                    <h3>Lvl</h3>
+                    <p id="gameLevel-mobile">1</p>
+                </div>
+                <button id="pauseBtn" class="btn btn-primary">Pause</button>
+                <button id="exitGameBtn" class="btn btn-primary">Quitter</button>
+            </div>
+
+            <!-- Centre: Pièce Suivante + Canvas + Boutons -->
+            <div class="game-center-column">
+                <div class="next-piece-box">
+                    <h3>Prochaine Pièce</h3>
+                    <canvas id="nextPieceCanvas" width="160" height="160"></canvas>
+                </div>
+                <div class="game-left">
+                    <canvas id="gameCanvas" width="300" height="600"></canvas>
+                    <div id="mobileControls" class="mobile-controls">
+                        <button id="btnLeft" class="control-btn">←</button>
+                        <button id="btnRotate" class="control-btn">↻</button>
+                        <button id="btnRight" class="control-btn">→</button>
+                        <button id="btnDown" class="control-btn">↓</button>
+                        <button id="btnHardDrop" class="control-btn">⬇️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barre droite (PC seulement) -->
+            <div class="game-right">
+                <div class="game-info">
+                    <div class="info-box">
+                        <h3>Score</h3>
+                        <p id="gameScore">0</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>XP Gagné</h3>
+                        <p id="gameXP">0</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Niveau</h3>
+                        <p id="gameLevel">1</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Record</h3>
+                        <p id="gameRecord">0</p>
+                    </div>
+                </div>
+                <div class="next-piece-box">
+                    <h3>Prochaine Pièce</h3>
+                    <canvas id="nextPieceCanvas" width="160" height="160"></canvas>
+                </div>
+                <div class="game-buttons">
+                    <button id="pauseBtn-desktop" class="btn btn-primary">Pause</button>
+                    <button id="exitGameBtn-desktop" class="btn btn-primary">Quitter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio-system.js"></script>
+    <script src="js/account-system.js"></script>
+    <script src="js/xp-system.js"></script>
+    <script src="js/shop-system.js"></script>
+    <script src="js/tetris-game.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

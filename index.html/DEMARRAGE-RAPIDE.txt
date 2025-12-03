@@ -1,0 +1,86 @@
+════════════════════════════════════════════════════════════
+  🚀 DÉMARRAGE RAPIDE - SYNCHRONISATION PC/MOBILE
+════════════════════════════════════════════════════════════
+
+ÉTAPE 1: Installer Node.js (une seule fois)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► Télécharge: https://nodejs.org/ (version LTS)
+► Installe-le
+► Vérifie: ouvre PowerShell et tape: node --version
+
+
+ÉTAPE 2: Lancer le serveur de synchronisation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► Ouvre PowerShell dans le dossier du jeu
+► Tape cette commande:
+
+    node sync-server.js
+
+► Tu verras: "🚀 Serveur lancé sur http://localhost:3000"
+
+
+ÉTAPE 3: Trouver l'IP de ton PC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans PowerShell, tape:
+
+    ipconfig
+
+Cherche "Adresse IPv4" (ressemble à: 192.168.1.100)
+
+
+ÉTAPE 4: Accéder au jeu
+━━━━━━━━━━━━━━━━━━━━━━━
+SUR LE PC:
+    http://localhost:5500
+    (ou l'adresse de ton serveur local)
+
+SUR LE TÉLÉPHONE:
+    http://192.168.1.100:5500
+    (remplace par l'IP trouvée en étape 3)
+
+
+ÉTAPE 5: Créer et Jouer!
+━━━━━━━━━━━━━━━━━━━━━━━
+► Sur le PC: Crée un compte
+► Sur le téléphone: Connecte-toi avec LES MÊMES identifiants
+► ✅ Les données sont automatiquement synchronisées!
+
+
+════════════════════════════════════════════════════════════
+
+✅ VÉRIFICATIONS:
+
+☑️ Serveur lancé?
+   Cherche "🚀 Serveur lancé" en PowerShell
+
+☑️ Bonne IP pour le téléphone?
+   Teste: http://[ton-ip]:5500 depuis le téléphone
+   Si ça marche, tu es prêt!
+
+☑️ Les comptes se synchronisent?
+   Regarde le petit indicateur en haut à droite:
+   - 📡 = Synchronisation en cours
+   - ✅ = Synchronisé!
+   - ⚠️ = Hors ligne
+
+
+════════════════════════════════════════════════════════════
+
+❓ QUESTIONS/PROBLÈMES:
+
+Q: "Pseudo non trouvé sur le téléphone"
+A: Le serveur ne tourne pas? Relance "node sync-server.js"
+
+Q: "Impossible de se connecter au serveur"
+A: - Vérifie l'IP en faisant ipconfig
+   - Assure-toi que http:// est utilisé (pas https://)
+   - Le téléphone et PC doivent être sur le même Wi-Fi
+
+Q: "Les données ne se synchronisent pas"
+A: - Attends 5 secondes
+   - Rafraîchis la page (F5)
+   - Vérifie que le serveur tourne toujours
+
+════════════════════════════════════════════════════════════
+
+🎮 C'EST PRÊT! Tes comptes sont synchronisés!
